@@ -1,0 +1,113 @@
+﻿@page
+@model Iamsigner_Integration.Pages.Signatories.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Signatory</h4>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Signatory.registerSignID" class="control-label"></label>
+                <input asp-for="Signatory.registerSignID" class="form-control" value="8a123c7f-37e3-4570-9531-0dc98a014a1b" readonly />
+                <span asp-validation-for="Signatory.registerSignID" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Signatory.name" class="control-label"></label>
+                <input asp-for="Signatory.name" class="form-control" />
+                <span asp-validation-for="Signatory.name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Signatory.notificationType" class="control-label"></label>
+                <input asp-for="Signatory.notificationType" class="form-control" />
+                <span asp-validation-for="Signatory.notificationType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Signatory.email" class="control-label"></label>
+                <input asp-for="Signatory.email" class="form-control" />
+                <span asp-validation-for="Signatory.email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Signatory.countryCode" class="control-label"></label>
+                <input asp-for="Signatory.countryCode" class="form-control" />
+                <span asp-validation-for="Signatory.countryCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Signatory.phone" class="control-label"></label>
+                <input asp-for="Signatory.phone" class="form-control" />
+                <span asp-validation-for="Signatory.phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Signatory.company" class="control-label"></label>
+                <input asp-for="Signatory.company" class="form-control" />
+                <span asp-validation-for="Signatory.company" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Signatory.signOrder" class="control-label"></label>
+                <input asp-for="Signatory.signOrder" class="form-control" />
+                <span asp-validation-for="Signatory.signOrder" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Signatory.signatureType" class="control-label"></label>
+                <input asp-for="Signatory.signatureType" class="form-control" />
+                <span asp-validation-for="Signatory.signatureType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Signatory.signatureColor" class="control-label"></label>
+                <input asp-for="Signatory.signatureColor" class="form-control" />
+                <span asp-validation-for="Signatory.signatureColor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Signatory.signPage" class="control-label"></label>
+                <input asp-for="Signatory.signPage" class="form-control" />
+                <span asp-validation-for="Signatory.signPage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Signatory.signPosition" class="control-label"></label>
+                <input asp-for="Signatory.signPosition" class="form-control" />
+                <span asp-validation-for="Signatory.signPosition" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Signatory.isMobile" /> @Html.DisplayNameFor(model => model.Signatory.isMobile)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Signatory.expiryDate" class="control-label"></label>
+                <input asp-for="Signatory.expiryDate" class="form-control" />
+                <span asp-validation-for="Signatory.expiryDate" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Signatory.isExpiring" /> @Html.DisplayNameFor(model => model.Signatory.isExpiring)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Signatory.isPasswordProtected" /> @Html.DisplayNameFor(model => model.Signatory.isPasswordProtected)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

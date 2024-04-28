@@ -1,0 +1,49 @@
+﻿@page
+@model Iamsigner_Integration.Pages.Documents.SupportingDocumentsModel
+@{
+}
+<h2>Supporting Documents List</h2>
+
+<a asp-page="./AddDoc">Add Document</a>
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+@if (Model.Documents != null && Model.Documents.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Document Name</th>
+                <th>Path</th>
+
+                <th>Extension</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var document in Model.Documents)
+            {
+                <tr>
+                    <td>@document.supportingDocID</td>
+                    <td>@document.supportingDocName</td>
+
+                    <td>@document.supportingDocPath</td>
+                    <td>@document.supportingDocExtension</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@if (TempData["NotFound"] != null)
+{
+    <div class="alert alert-success mt-3" role="alert">
+        @TempData["NotFound"]
+    </div>
+}

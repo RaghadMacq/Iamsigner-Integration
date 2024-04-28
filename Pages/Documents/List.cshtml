@@ -1,0 +1,38 @@
+﻿@page
+@model Iamsigner_Integration.Pages.Documents.ListModel
+@{
+    ViewData["Title"] = "Documents List";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if (Model.Document != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Status</th>
+                <th>Prefix</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.Document.masterDocID</td>
+                <td>@Model.Document.docStatus</td>
+                <td>@Model.Document.docCompanyPrefixNo</td>
+
+            </tr>
+        </tbody>
+    </table>
+}
+
+
+
+
+
+@* Imports and namespace declarations should be placed at the top of the file *@
+@* Remove the 'using' directives from here *@
+

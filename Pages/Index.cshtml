@@ -1,0 +1,93 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<style>
+    .token {
+        background-color: #f0f0f0;
+        padding: 5px;
+        border-radius: 5px;
+        width: 100%;
+        font-family: 'Courier New', Courier, monospace;
+        word-wrap: break-word; /* Ensures long tokens wrap within the container */
+        display: inline-block; /* Forces the container to expand to fit its contents */
+    }
+
+    .custom-btn {
+        width: 100%;
+        height: 50px; /* Adjust as needed */
+    }
+</style>
+
+<h1>IamSigner Integration</h1>
+
+<form method="post">
+    <button class="btn-primary btn custom-btn" type="submit">Generate Token</button>
+</form>
+
+@if (TempData["success"] != null)
+{
+    <div class="alert alert-success mt-3" role="alert">
+        @TempData["success"]
+    </div>
+    //<p>@TempData["response"]</p>
+}
+
+@if (TempData["failure"] != null)
+{
+    <div class="alert alert-danger mt-3" role="alert">
+        @TempData["failure"]
+    </div>
+}
+
+@if (TempData["authToken"] != null)
+{
+    <div class="token mt-3">
+        @TempData["authToken"]
+    </div>
+}
+
+<div class="row mt-3">
+    <div class="col-md-3">
+        <a class="btn btn-primary btn-block custom-btn" asp-area="" asp-page="/UploadDocuments">Upload Documents</a>
+    </div>
+    <div class="col-md-3">
+        <a class="btn btn-primary btn-block custom-btn" asp-area="" asp-page="/Signatories/Index">Get Signatories</a>
+    </div>
+    <div class="col-md-3">
+        <a class="btn btn-primary btn-block custom-btn" asp-area="" asp-page="/Documents/List">Get Document Status</a>
+    </div>
+    <div class="col-md-3">
+        <a class="btn btn-primary btn-block custom-btn" asp-area="" asp-page="/Documents/SupportingDocuments">Get Supporting Documents</a>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="col-md-3">
+        <a class="btn btn-primary btn-block custom-btn" asp-area="" asp-page="/Documents/DeleteDocuments">Delete Documents</a>
+    </div>
+    <div class="col-md-3">
+        <a class="btn btn-primary btn-block custom-btn" asp-area="" asp-page="/Documents/DownloadDocument">Download Document</a>
+    </div>
+    <div class="col-md-3">
+        <a class="btn btn-primary btn-block custom-btn" asp-area="" asp-page="/Templates/Index">Get Templates</a>
+    </div>
+</div>
+
+<form method="post" asp-page-handler="SecondForm" class="mt-3">
+    <button class="btn-primary btn btn-block custom-btn" type="submit">Send And Sign</button>
+</form>
+
+<form method="post" asp-page-handler="ThirdForm" class="mt-3">
+    <button class="btn-primary btn btn-block custom-btn" type="submit">Create Register Sign</button>
+</form>
+
+@if (TempData["response"] != null)
+{
+    <div class="alert alert-success mt-3" role="alert">
+        @TempData["response"]
+    </div>
+    //<p>@TempData["response"]</p>
+}

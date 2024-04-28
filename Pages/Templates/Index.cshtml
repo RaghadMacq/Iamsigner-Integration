@@ -1,0 +1,39 @@
+﻿@page
+@model Iamsigner_Integration.Pages.Templates.IndexModel
+@{
+}
+<h1>Get Templates</h1>
+
+@if (TempData["responseBody"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["responseBody"]
+    </div>
+}
+@if (TempData["NoTemplatesMessage"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["NoTemplatesMessage"]
+    </div>
+}
+@if (Model.Templates != null && Model.Templates.Any())
+{
+    <h2>Templates:</h2>
+    <ul>
+        @foreach (var template in Model.Templates)
+        {
+            <li>@template.TemplateName</li>
+        }
+    </ul>
+}
+else if (Model.ErrorMessage != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @Model.ErrorMessage
+    </div>
+}
+
+<form method="post" asp-page-handler="GetTemplates">
+    <button class="btn-primary btn" type="submit">Get Templates</button>
+</form>
+<a class="btn btn-primary mt-3" asp-area="" asp-page="/Templates/AddTemplate">Add Template</a>

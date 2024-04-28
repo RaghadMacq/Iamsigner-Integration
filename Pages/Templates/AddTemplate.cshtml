@@ -1,0 +1,33 @@
+﻿@page
+@model Iamsigner_Integration.Pages.Templates.AddTemplateModel
+
+<h1>Add Template</h1>
+
+@if (Model.SuccessMessage != null)
+{
+    <div class="alert alert-success" role="alert">
+        @Model.SuccessMessage
+    </div>
+}
+else if (Model.ErrorMessage != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @Model.ErrorMessage
+    </div>
+}
+
+<form method="post">
+    <div class="form-group">
+        <label for="TemplateID">Template ID:</label>
+        <input type="text" id="TemplateID" name="TemplateID" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="RegisterSignID">Register Sign ID:</label>
+        <input type="text" id="RegisterSignID" name="RegisterSignID" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="MasterDocID">Master Document ID:</label>
+        <input type="text" id="MasterDocID" name="MasterDocID" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Add Template</button>
+</form>

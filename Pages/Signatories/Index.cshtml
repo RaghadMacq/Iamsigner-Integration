@@ -1,0 +1,59 @@
+﻿@page
+@model Iamsigner_Integration.Pages.Signatories.IndexModel
+@{
+    ViewData["Title"] = "Signatories";
+
+}
+<h1>Signatories</h1>
+<a asp-page="./Create">Create</a>
+
+@if (Model.Signatories != null && Model.Signatories.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Country Code</th>
+                <th>Mobile</th>
+                <th>Action</th>
+                <!-- Add more columns as needed -->
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var signatory in Model.Signatories)
+            {
+                <tr>
+                    <td>@signatory.signatoriesID</td>
+                    <td>@signatory.name</td>
+                    <td>@signatory.email</td>
+                    <td>@signatory.countryCode</td>
+                    <td>@signatory.phone</td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@signatory.signatoriesID">Edit</a>
+                        |
+                        <button class="btn btn-danger" type="button" onclick="confirmDelete('@signatory.signatoriesID')">Delete</button>
+
+                        <form id="deleteForm_@signatory.signatoriesID" asp-page-handler="Delete" method="post" style="display: none;">
+                            <input type="hidden" name="id" value="@signatory.signatoriesID" />
+                        </form>
+                    </td>
+                    <!-- Add more columns as needed -->
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No signatories found.</p>
+}
+@* JavaScript function to confirm deletion *@
+<script>
+    function confirmDelete(signatoryId) {
+        if (confirm('Are you sure you want to delete this signatory?')) {
+            document.getElementById('deleteForm_' + signatoryId).submit();
+        }
+    }
+</script>

@@ -1,0 +1,33 @@
+﻿@page
+@model Iamsigner_Integration.Pages.Documents.DownloadDocumentModel
+@{
+    ViewData["Title"] = "Download Document";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if (!string.IsNullOrEmpty(ViewData["ErrorMessage"] as string))
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewData["ErrorMessage"]
+    </div>
+}
+@if (TempData["DownloadDocument"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["DownloadDocument"]
+    </div>
+}
+<form method="post">
+    <div class="form-group">
+        <label for="masterDocID">Master Document ID:</label>
+        <input type="text" id="masterDocID" name="masterDocID" class="form-control" />
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="isDownloadAuditTrail" name="isDownloadAuditTrail">
+        <label class="form-check-label" for="isDownloadAuditTrail">
+            Download Audit Trail
+        </label>
+    </div>
+    <button type="submit" class="btn btn-primary">Download</button>
+</form>

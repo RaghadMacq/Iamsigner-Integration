@@ -1,0 +1,18 @@
+﻿@page
+@model Iamsigner_Integration.Pages.Documents.DeleteDocumentsModel
+@{
+}
+<h1 class="mt-5">Delete Document</h1>
+@if (TempData["DeleteMessage"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["DeleteMessage"]
+    </div>
+}
+<form method="post">
+    <div class="form-group">
+        <label for="masterDocID">Enter Master Document ID:</label>
+        <input type="text" id="masterDocID" name="masterDocID" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Delete Document</button>
+</form>

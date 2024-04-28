@@ -1,0 +1,28 @@
+﻿@page
+@model Iamsigner_Integration.Pages.Documents.AddDocModel
+
+<div class="container">
+    <h1 class="mt-5">Add Supporting Documents</h1>
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="SupportingDocName">Supporting Document Name:</label>
+            <input type="text" class="form-control" id="SupportingDocName" name="Document.supportingDocName">
+        </div>
+        <div class="form-group">
+            <label for="SupportingDocExtension">Supporting Document Extension:</label>
+            <input type="text" class="form-control" id="SupportingDocExtension" name="Document.supportingDocExtension">
+        </div>
+        <div class="form-group">
+            <label for="SupportingDocFile">Choose File:</label>
+            <input type="file" class="form-control-file" id="SupportingDocFile" name="SupportingDocFile">
+            <small class="form-text text-muted">Upload the supporting document file here.</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
