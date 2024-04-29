@@ -74,20 +74,20 @@
     <div class="col-md-3">
         <a class="btn btn-primary btn-block custom-btn" asp-area="" asp-page="/Templates/Index">Get Templates</a>
     </div>
+    <div class="col-md-3">
+        <a class="btn btn-primary btn-block custom-btn" asp-area="" asp-page="/RegisterSign">Create Register Sign</a>
+    </div>
 </div>
 
 <form method="post" asp-page-handler="SecondForm" class="mt-3">
     <button class="btn-primary btn btn-block custom-btn" type="submit">Send And Sign</button>
 </form>
 
-<form method="post" asp-page-handler="ThirdForm" class="mt-3">
-    <button class="btn-primary btn btn-block custom-btn" type="submit">Create Register Sign</button>
-</form>
+
 
 @if (TempData["response"] != null)
 {
     <div class="alert alert-success mt-3" role="alert">
         @TempData["response"]
     </div>
-    //<p>@TempData["response"]</p>
 }

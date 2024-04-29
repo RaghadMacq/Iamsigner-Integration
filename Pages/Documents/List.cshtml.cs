@@ -9,7 +9,7 @@ namespace Iamsigner_Integration.Pages.Documents
 {
     public class ListModel : PageModel
     {
-        public Document Document { get; set; }
+        public DocumentStatus Document { get; set; }
         public List<SupportingDocument> Documents { get; set; }
 
         private readonly ILogger<ListModel> _logger;

@@ -14,7 +14,11 @@ namespace Iamsigner_Integration.Pages.Documents
         {
             _clientFactory = clientFactory;
         }
+        public void OnGet()
+        {
+            TempData.Keep("authToken");
 
+        }
         public async Task<IActionResult> OnPostAsync(string masterDocID, bool isDownloadAuditTrail)
         {
             try
@@ -39,10 +43,17 @@ namespace Iamsigner_Integration.Pages.Documents
                     // If the response is successful, return the file content
                     var jsonResponse = await response.Content.ReadAsStringAsync();
                     TempData["DownloadDocument"] = jsonResponse.ToString();
+                    if (jsonResponse.Contains("\"message\":\"NoDataFound\""))
+                    {
+                        // Handle case when NoDataFound is returned
+                        return Page(); // Return the page without redirecting
+                    }
+                    else { 
                     var fileContent = await response.Content.ReadAsByteArrayAsync();
                     var contentType = response.Content.Headers.ContentType.ToString();
                     var fileName = $"DownloadedDocument_{DateTime.UtcNow.ToString("yyyyMMddHHmmss")}.pdf"; // Adjust the file name and extension based on the response
                     return File(fileContent, contentType, fileName);
+                }
                 }
                 else
                 {

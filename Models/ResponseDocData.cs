@@ -5,6 +5,6 @@
         public string message { get; set; }
         public bool successStatus { get; set; }
         public string statusCode { get; set; }
-        public Document response { get; set; } // Change this to Document type
+        public DocumentStatus response { get; set; } // Change this to Document type
     }
 }

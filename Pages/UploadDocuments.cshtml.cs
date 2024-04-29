@@ -53,10 +53,10 @@ namespace Iamsigner_Integration.Pages
                     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
 
                     var response = await client.PostAsync("api/integrations/UploadDocuments", content);
-
-                if (response.IsSuccessStatusCode)
-                {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
+
+                    if (response.IsSuccessStatusCode)
+                {
                     TempData["response"] = jsonResponse;
                     // Handle successful response
                     return RedirectToPage("Index");
